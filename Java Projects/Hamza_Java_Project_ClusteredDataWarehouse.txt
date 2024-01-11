@@ -1,4 +1,4 @@
 Hello, this is Hamza's project for Java. The project is titled "Clustered Data Warehouse"
 
 Refer to README.md for the project description:
-https://github.com/hamzaaj2/progressSoft/blob/master/clusteredDataWarehouse/clusteredDataWarehouse/README.md
+https://github.com/hamzaaj2/haaj/blob/main/Java%20Projects/clusteredDataWarehouse/clusteredDataWarehouse/README.md
