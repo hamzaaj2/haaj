@@ -1,0 +1,40 @@
+﻿@model Medicine_delivery.Models.MedicalTest
+
+@{
+    ViewBag.Title = "ViewMedicalTest";
+}
+
+<h2>View Medical Test</h2>
+
+<div>
+    <hr />
+    <p style="margin-top:30px; margin-bottom:30px;">
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+        @Html.ActionLink("Back to List", "Index", new { caseId = Request.QueryString["caseId"] }, new { @class = "red-button" })
+    </p>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Patient Name
+            @*@Html.DisplayNameFor(model => model.Case.Patient.PatientName)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Case.Patient.PatientName)
+        </dd>
+
+        <dt>
+            MedicalTest Name
+            @*@Html.DisplayNameFor(model => model.MedicalExamination.Name)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedicalExamination.Name)
+        </dd>
+        <br />
+        <dd>
+            <img src="@Url.Content(Model.ImagePath)" width="1000" height="1000" />
+        </dd>
+
+    </dl>
+</div>

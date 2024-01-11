@@ -1,0 +1,110 @@
+﻿@model Medicine_delivery.Models.Case
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Case Details</h2>
+
+<div>
+    <h4>Doctor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Doctor Name
+            @*@Html.DisplayNameFor(model => model.Doctor.DoctorName)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.DoctorName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Doctor.Specialty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.Specialty)
+        </dd>
+        <dt>
+            Phone Number
+            @*@Html.DisplayNameFor(model => model.Doctor.PhoneNumber)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Doctor.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.Email)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Patient Name
+            @*@Html.DisplayNameFor(model => model.Patient.PatientName)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.PatientName)
+        </dd>
+
+        <dt>
+            National Number
+            @*@Html.DisplayNameFor(model => model.Patient.NationalNumber)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.NationalNumber)
+        </dd>
+        <dt>
+            Phone Number
+            @*@Html.DisplayNameFor(model => model.Patient.PhoneNumber)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.Age)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.Gender)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.Email)
+        </dd>
+
+
+    </dl>
+</div>
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Doctor"))
+    {
+        <a href="@Url.Action("CasesByPatient", "Cases",new {patientId = Model.PatientId} )" class="btn btn-danger blue-button" style="margin-bottom: 25px;"> Patient Cases</a>
+    }
+}
+
+<p>
+    @Html.ActionLink("Back to List", "Index", null, null, new { @class = "red-button" })
+</p>

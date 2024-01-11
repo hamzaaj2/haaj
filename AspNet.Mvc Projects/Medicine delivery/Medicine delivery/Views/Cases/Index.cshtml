@@ -1,0 +1,126 @@
+﻿@model IEnumerable<Medicine_delivery.Models.Case>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Cases</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Case Id
+            @*@Html.DisplayNameFor(model => model.Id)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Specialty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diseases)
+        </th>
+        <th>
+            Doctor Name
+            @*@Html.DisplayNameFor(model => model.Doctor.DoctorName)*@
+        </th>
+        <th>
+            Patient Info
+            @*@Html.DisplayNameFor(model => model.Patient.PatientInfo)*@
+        </th>
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("Admin"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+            }
+        }
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specialty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diseases)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctor.DoctorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.PatientInfo)
+            </td>
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                }
+            }
+            @*<div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a href="@Url.Action("Index", "MedicineOfPatients",new {caseId=item.Id} )" class="btn btn-danger">Medicine</a>
+                    </div>
+                    <div class="col-md-offset-2 col-md-10">
+                        <a href="@Url.Action("Index", "MedicalTests",new {caseId=item.Id} )" class="btn btn-danger"> Medical Test</a>
+                    </div>
+                </div>*@
+            <td>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Pharmacist"))
+                    {
+                        <div class="col-md-offset-2 col-md-10">
+                            <a href="@Url.Action("Index", "MedicineOfPatients",new {caseId=item.Id} )" class="btn btn-danger table-blue-button">Medicine</a>
+                        </div>
+                    }
+                    if (User.IsInRole("Patient"))
+                    {
+                        <div class="col-md-offset-2 col-md-10">
+                            <a href="@Url.Action("Index", "MedicineOfPatients",new {caseId=item.Id} )" class="btn btn-danger table-blue-button">Medicine</a>
+                            <a href="@Url.Action("Index", "MedicalTests",new {caseId=item.Id} )" class="btn btn-danger table-blue-button"> Medical Test</a>
+                            <a href="@Url.Action("Details", "Cases", new { id = item.Id })" class="btn btn-danger table-blue-button">Details</a>
+                        </div>
+                    }
+                    if (User.IsInRole("Doctor"))
+                    {
+                        <div class="col-md-offset-2 col-md-10">
+                            <a href="@Url.Action("Index", "MedicineOfPatients",new {caseId=item.Id} )" class="btn btn-danger table-blue-button">Medicine</a>
+                            <a href="@Url.Action("Index", "MedicalTests",new {caseId=item.Id} )" class="btn btn-danger table-blue-button"> Medical Test</a>
+                            <a href="@Url.Action("Details", "Cases", new { id = item.Id })" class="btn btn-danger table-blue-button">Details</a>
+                        </div>
+                    }
+                    if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    }
+
+                }
+
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Doctor"))
+    {
+        <a href="@Url.Action("Create", "Cases") " class="btn btn-danger blue-button">Create New Case</a>
+        @*<p>
+                @Html.ActionLink("Create New", "Create")
+            </p>*@
+    }
+}

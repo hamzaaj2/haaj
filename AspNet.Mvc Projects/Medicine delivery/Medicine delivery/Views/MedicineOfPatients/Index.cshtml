@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Medicine_delivery.Models.MedicineOfPatient>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Medicine for Patient</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            First Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Medicine.GenericName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Route)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Frequency)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.From)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.To)
+        </th>
+        <th>
+            Number Pill/mL
+            @*@Html.DisplayNameFor(model => model.SizeOfMedicine)*@
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Case.Doctor.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medicine.GenericName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Route)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Frequency)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.From)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.To)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SizeOfMedicine)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id, caseId = item.CaseId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id, caseId = item.CaseId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id, caseId = item.CaseId })
+                </td>*@
+        </tr>
+    }
+
+
+
+
+
+</table>
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Doctor"))
+    {
+        <a href="@Url.Action("Create", "MedicineOfPatients",new {caseId=Request.QueryString["caseId"]}) " class="btn btn-danger blue-button">Add Medicine</a>
+    }
+}

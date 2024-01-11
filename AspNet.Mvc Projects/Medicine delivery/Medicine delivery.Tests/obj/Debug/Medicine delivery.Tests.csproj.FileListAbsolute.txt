@@ -1,0 +1,52 @@
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Medicine delivery.Tests.dll.config
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Medicine delivery.Tests.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Medicine delivery.Tests.pdb
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Medicine delivery.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\System.Web.Helpers.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\System.Web.Mvc.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\System.Web.Razor.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\System.Web.WebPages.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.Owin.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\System.Web.Optimization.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.Owin.Security.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Owin.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\EntityFramework.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Medicine delivery.pdb
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Medicine delivery.dll.config
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\System.Web.Helpers.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\System.Web.Mvc.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\System.Web.Razor.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\System.Web.WebPages.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.Owin.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\System.Web.Optimization.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.Owin.Security.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\EntityFramework.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+C:\Medicine delivery\Medicine delivery.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+C:\Medicine delivery\Medicine delivery.Tests\obj\Debug\Medicine delivery.Tests.csproj.AssemblyReference.cache
+C:\Medicine delivery\Medicine delivery.Tests\obj\Debug\Medicine delivery.Tests.csproj.CoreCompileInputs.cache
+C:\Medicine delivery\Medicine delivery.Tests\obj\Debug\Medicine delivery.Tests.csproj.CopyComplete
+C:\Medicine delivery\Medicine delivery.Tests\obj\Debug\Medicine delivery.Tests.dll
+C:\Medicine delivery\Medicine delivery.Tests\obj\Debug\Medicine delivery.Tests.pdb

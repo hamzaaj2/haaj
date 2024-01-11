@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Medicine_delivery.Models.OrderMedicineOfPatient>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Medicines for Patient</h2>
+<table class="table">
+    <tr>
+        <th>
+            Patient Name
+            @*@Html.DisplayNameFor(model => model.Case.Patient.PatientName)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MedicineOfPatient.Medicine.GenericName)
+        </th>
+        <th>
+            Order Name
+            @*@Html.DisplayNameFor(model => model.Order.Name)*@
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Case.Patient.PatientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicineOfPatient.Medicine.GenericName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.Name)
+            </td>
+            <td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Pharmacist"))
+                    {
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id, orderId = item.OrderId }, new { @class = "table-blue-button" })*@
+                    }
+                }
+                @*@Html.ActionLink("Details", "Details", new { id = item.Id, orderId = item.OrderId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id, orderId = item.OrderId })*@
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Pharmacist"))
+    {
+        <a href="@Url.Action("Create", "OrderMedicineOfPatients",new {orderId=Request.QueryString["orderId"]}) " class="btn btn-danger blue-button">Add Medicine for Patient</a>
+    }
+}

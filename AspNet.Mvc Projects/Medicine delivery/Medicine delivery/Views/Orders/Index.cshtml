@@ -1,0 +1,281 @@
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="../html5-qrcode.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+@model IEnumerable<Medicine_delivery.Models.Order>
+
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2>Orders</h2>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Order Id
+            @*@Html.DisplayNameFor(model => model.Id)*@
+        </th>
+        <th>
+            Driver Name
+            @*@Html.DisplayNameFor(model => model.Driver.DriverName)*@
+        </th>
+        <th>
+            Order Name
+            @*@Html.DisplayNameFor(model => model.Name)*@
+        </th>
+        <th>
+            Order Status
+            @*@Html.DisplayNameFor(model => model.StatusOfOrder.Name)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeCompleted)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Driver.DriverName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td class="status">
+                @Html.DisplayFor(modelItem => item.StatusOfOrder.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeCompleted)
+            </td>
+            <td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Pharmacist"))
+                    {
+                        <a href="@Url.Action("Index", "OrderMedicineOfPatients",new {orderId=item.Id} )" class="btn btn-danger table-blue-button">Add Medicines</a>
+                        <a href="@Url.Action("Details", "Orders",new {id=item.Id} )" class="btn btn-danger table-blue-button force-show">Details</a>
+                        <a href="@Url.Action("UnderDelivery", "Orders",new {id=item.Id} )" class="btn btn-danger table-red-button">Give to Driver</a>
+                    }
+                    if (User.IsInRole("Patient"))
+                    {
+                        <a href="@Url.Action("Index", "OrderMedicineOfPatients",new {orderId=item.Id} )" class="btn btn-danger table-blue-button force-show">Medicines</a>
+                        <a href="@Url.Action("Details", "Orders",new {id=item.Id} )" class="btn btn-danger table-blue-button force-show">Driver Details</a>
+                        <a href="#" data-modal-target="#modal" class="btn btn-danger table-blue-button">Show QR Code</a>
+
+                    }
+                    if (User.IsInRole("Driver"))
+                    {
+                        <a href="@Url.Action("Details", "Orders",new {id=item.Id} )" class="btn btn-danger table-blue-button force-show">Patient Details</a>
+                        <a href="@Url.Action("Messing", "Orders",new {id=item.Id} )" class="btn btn-danger table-red-button">can't Deliver</a>
+                        <a href="@Url.Action("Delivered", "Orders",new {id=item.Id} )" class="btn btn-danger btn-hide" id="noneMyCheck">Delivered</a>
+                        <a href="#" data-modal-target="#modal-2" class="btn btn-danger table-blue-button click">Scan QR Code</a>
+
+                    }
+
+                    if (User.IsInRole("Admin"))
+                    {
+                        <a href="@Url.Action("Edit", "Orders",new {id=item.Id} )" class="btn btn-danger table-blue-button">Edit</a>
+                    }
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Pharmacist"))
+    {
+        @Html.ActionLink("Create New", "Create", null, null, new { @class = "blue-button table-mar" })
+    }
+}
+
+<div class="modal" id="modal">
+    <div class="modal-header">
+        <div class="title">Generate QR Code</div>
+        <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+        <div id="qrcode"></div>
+
+    </div>
+</div>
+<div id="overlay"></div>
+
+
+
+<div class="modal" id="modal-2">
+    <div class="modal-header">
+        <div class="title">Scan QR Code</div>
+        <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col">
+                <div style="width:500px;" id="reader"></div>
+            </div>
+            <div class="col bt btn-hide">
+                <h4>SCAN RESULT</h4>
+                <div id="result">Result Here</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="overlay"></div>
+
+
+
+
+
+
+
+
+<script>
+    $(function () {
+
+        $('.click').click(function () {
+            $(this).prev().attr("id", "myCheck");
+        });
+    });
+</script>
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Driver"))
+    {
+
+
+        <script>
+            var searchText1 = 'Messing';
+            var searchText2 = 'Delivered';
+            $(function () {
+
+                $('.status').each(function () {
+                    if (searchText1 === $.trim($(this).text()) || searchText2 === $.trim($(this).text())) {
+                        $(this).next().next().children().css({ 'display': 'none' })
+                    }
+                });
+            });
+
+
+        </script>
+    }
+    if (User.IsInRole("Patient"))
+    {
+
+
+        <script>
+            var searchText = 'Delivered';
+            $(function () {
+
+                $('.status').each(function () {
+
+                    if (searchText === $.trim($(this).text())) {
+
+                        $(this).next().next().children().css({ 'display': 'none' })
+                    }
+                });
+            });
+        </script>
+    }
+    if (User.IsInRole("Pharmacist"))
+    {
+
+        <script>
+            var searchText1 = 'Under Delivery';
+            var searchText2 = 'Delivered';
+            $(function () {
+
+                $('.status').each(function () {
+                    if (searchText1 === $.trim($(this).text()) || searchText2 === $.trim($(this).text())) {
+                        $(this).next().next().children().css({ 'display': 'none' })
+                    }
+                });
+            });
+
+
+        </script>
+    }
+}
+
+
+
+
+
+
+<script>
+    const openModalButtons = document.querySelectorAll('[data-modal-target]')
+    const closeModalButtons = document.querySelectorAll('[data-close-button]')
+    const overlay = document.getElementById('overlay')
+
+    openModalButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = document.querySelector(button.dataset.modalTarget)
+            openModal(modal)
+        })
+    })
+
+    overlay.addEventListener('click', () => {
+        const modals = document.querySelectorAll('.modal.active')
+        modals.forEach(modal => {
+            closeModal(modal)
+        })
+    })
+
+    closeModalButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('.modal')
+            closeModal(modal)
+        })
+    })
+
+    function openModal(modal) {
+        if (modal == null) return
+        modal.classList.add('active')
+        overlay.classList.add('active')
+    }
+
+    function closeModal(modal) {
+        if (modal == null) return
+        modal.classList.remove('active')
+        overlay.classList.remove('active')
+    }
+</script>
+<script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+        text: "weCareQrFFFF",
+        width: 400,
+        height: 400,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+</script>
+<script type="text/javascript">
+    function onScanSuccess(qrCodeMessage) {
+        document.getElementById('result').innerHTML = '<span class="result">' + qrCodeMessage + '</span>';
+
+        if (qrCodeMessage == "weCareQrFFFF") {
+            document.getElementById("myCheck").click();
+        }
+    }
+
+
+
+    function onScanError(errorMessage) {
+        //handle scan error
+    }
+
+    var html5QrcodeScanner = new Html5QrcodeScanner(
+        "reader", { fps: 10, qrbox: 250 });
+    html5QrcodeScanner.render(onScanSuccess, onScanError);
+
+</script>

@@ -1,0 +1,41 @@
+﻿@model Medicine_delivery.Models.MedicalTest
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MedicalTest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MedicalExamination.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedicalExamination.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id , caseId = Request.QueryString["caseId"] }) |
+    @Html.ActionLink("Back to List", "Index", new { caseId = Request.QueryString["caseId"] })
+</p>

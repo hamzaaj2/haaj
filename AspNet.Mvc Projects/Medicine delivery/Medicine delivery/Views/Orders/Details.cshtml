@@ -1,0 +1,93 @@
+﻿@model Medicine_delivery.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Order Details</h2>
+
+<div>
+    <h4>Driver</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Driver Name
+            @*@Html.DisplayNameFor(model => model.Driver.DriverName)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.DriverName)
+        </dd>
+        <dt>
+            Phone Number
+            @*@Html.DisplayNameFor(model => model.Driver.PhoneNumber)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.Email)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Patient Name
+            @*@Html.DisplayNameFor(model => model.OrderMedicineOfPatient.FirstOrDefault().Case.Patient.PatientName)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderMedicineOfPatient.FirstOrDefault().Case.Patient.PatientName)
+        </dd>
+        <dt>
+            Phone Number
+            @*@Html.DisplayNameFor(model => model.OrderMedicineOfPatient.FirstOrDefault().Case.Patient.PhoneNumber)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderMedicineOfPatient.FirstOrDefault().Case.Patient.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderMedicineOfPatient.FirstOrDefault().Case.Patient.Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderMedicineOfPatient.FirstOrDefault().Case.Patient.Area)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderMedicineOfPatient.FirstOrDefault().Case.Patient.Street)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderMedicineOfPatient.FirstOrDefault().Case.Patient.Street)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderMedicineOfPatient.FirstOrDefault().Case.Patient.BuildingNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderMedicineOfPatient.FirstOrDefault().Case.Patient.BuildingNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderMedicineOfPatient.FirstOrDefault().Case.Patient.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderMedicineOfPatient.FirstOrDefault().Case.Patient.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+    @Html.ActionLink("Back to List", "Index", null, null, new { @class = "red-button" })
+</p>

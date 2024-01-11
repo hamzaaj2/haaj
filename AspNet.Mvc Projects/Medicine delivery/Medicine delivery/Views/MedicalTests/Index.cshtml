@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Medicine_delivery.Models.MedicalTest>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Medical Tests for Patient</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            MedicalTest Name
+            @*@Html.DisplayNameFor(model => model.MedicalExamination.Name)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UploadTime)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicalExamination.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImagePath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadTime)
+            </td>
+            <td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Patient"))
+                    {
+                        <a href="@Url.Action("Edit", "MedicalTests", new { id = item.Id, caseId = item.CaseId })" class="btn btn-danger table-blue-button">Upload Medical Test</a>
+                    }
+                    if (User.IsInRole("Doctor"))
+                    {
+                        <a href="@Url.Action("ViewMedicalTest", "MedicalTests", new { id = item.Id, caseId = item.CaseId })" class="btn btn-danger table-blue-button">View Medical Test</a>
+                    }
+
+                }
+                @*@Html.ActionLink("Add Medical Test", "Edit", new { id = item.Id, caseId = item.CaseId })*@
+                @*@Html.ActionLink("Details", "Details", new { id = item.Id, caseId = item.CaseId }) |*@
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.Id, caseId = item.CaseId })*@
+            </td>
+        </tr>
+    }
+
+</table>
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Doctor"))
+    {
+        <a href="@Url.Action("Create", "MedicalTests",new {caseId=Request.QueryString["caseId"]}) " class="btn btn-danger blue-button">Add Medical Test</a>
+    }
+}

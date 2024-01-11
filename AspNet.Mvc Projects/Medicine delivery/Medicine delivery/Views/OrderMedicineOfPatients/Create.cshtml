@@ -1,0 +1,56 @@
+﻿<div class="my-box">
+
+
+    @model Medicine_delivery.Models.OrderMedicineOfPatient
+
+    @{
+        ViewBag.Title = "Create";
+    }
+
+    <h2>Add Medicine for Patient</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+
+                @if (ViewBag.CaseList != null)
+                {
+                    @Html.DropDownListFor(model => model.CaseId, ViewBag.CaseList as SelectList, "--Select Case--", new { @class = "form-control" })
+                }
+             </div>
+
+             <div class="form-group">
+
+                 @Html.DropDownListFor(model => model.MedicineOfPatientId, new SelectList(" "), "--Select Medicine--", new { @class = "form-control" })
+             </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Add" class="btn btn-default blue-button" />
+                    @Html.ActionLink("Back to List", "Index", new { orderId = Request.QueryString["orderId"] }, new { @class = "red-button" })
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#CaseId").change(function () {
+            $.get("/OrderMedicineOfPatients/GetMedicineList", { CaseId: $("#CaseId").val() }, function (data) {
+                $("#MedicineOfPatientId").empty();
+                $.each(data, function (inedx, row) {
+                    $("#MedicineOfPatientId").append("<option value='" + row.Id + "'>" + row.MedicineName + "</option>")
+                });
+            });
+        })
+    });
+     
+</script>
